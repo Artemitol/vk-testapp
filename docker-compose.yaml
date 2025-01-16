@@ -13,3 +13,5 @@ services:
       context: ./test-backend
     ports:
       - 3000:3000
+    volumes:
+      - ./test-backend:/app
