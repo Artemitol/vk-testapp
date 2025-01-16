@@ -1,4 +1,4 @@
-import classes from "./main.module.scss"
+import classes from "./main.module.css"
 
 interface Props {
     children?: React.ReactNode

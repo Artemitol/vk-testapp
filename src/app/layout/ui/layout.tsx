@@ -1,5 +1,5 @@
 import { Main } from "@widgets/main"
-import classes from "./layout.module.scss"
+import classes from "./layout.module.css"
 import { Outlet } from "react-router-dom"
 import { Header } from "@widgets/header"
 

@@ -1,4 +1,4 @@
-import classes from "./header.module.scss"
+import classes from "./header.module.css"
 
 export function Header() {
     return (

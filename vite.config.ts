@@ -10,23 +10,13 @@ export default defineConfig(() => {
         plugins: [react()],
         resolve: {
             alias: {
-                "@scss": path.resolve("src/shared/scss"),
+                "@css": path.resolve("src/shared/css"),
                 "@app": path.resolve("src/app"),
                 "@pages": path.resolve("src/pages"),
                 "@widgets": path.resolve("src/widgets"),
                 "@entities": path.resolve("src/entities"),
                 "@features": path.resolve("src/features"),
                 "@shared": path.resolve("src/shared"),
-            },
-        },
-        css: {
-            preprocessorOptions: {
-                scss: {
-                    additionalData: `
-                        @use "@scss/_mixins.scss" as *;
-                        @use "@scss/_media.scss" as *;
-                    `,
-                },
             },
         },
     }

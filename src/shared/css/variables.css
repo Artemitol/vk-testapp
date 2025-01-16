@@ -1,0 +1,11 @@
+:root {
+    --site-padding-x: 100px;
+    --max-content-width: var(--desktop-min);
+
+    /* Media values */
+    --desktop-min: 1280px;
+    --mobile-max: 767px;
+    --tablet-min: 768px;
+    --tablet-max: 1279;
+    
+}

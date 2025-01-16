@@ -1,4 +1,4 @@
-import classes from "./footer.module.scss"
+import classes from "./footer.module.css"
 
 export function Footer() {
     return (
