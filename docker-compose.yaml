@@ -6,6 +6,8 @@ services:
       - 8080:5173
     volumes:
       - ./frontend:/app
+    depends_on:
+      - backend
     command: sh -c "npm i && npm run host"
 
   backend:

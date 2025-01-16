@@ -1,0 +1,7 @@
+.repositoryCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    border: 1px solid darkgray;
+}

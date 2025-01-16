@@ -1,0 +1,14 @@
+.itemsList {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+}
+
+.errorMessage {
+    color: brown;
+}
+
+.emptyList {
+    align-items: center;
+}
+
