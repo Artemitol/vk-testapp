@@ -1,0 +1,15 @@
+services:
+  frontend:
+    build: 
+      context: ./frontend
+    ports:
+      - 8080:5173
+    volumes:
+      - ./frontend:/app
+    command: sh -c "npm i && npm run host"
+
+  backend:
+    build:
+      context: ./test-backend
+    ports:
+      - 3000:3000
