@@ -1,15 +1,43 @@
 :root {
-    --color-background-dark: #12161e;
-    --color-background-light: #ececec;
-    --site-padding-x: 100px;
+    /* COLORS */
+    --color-background-dark: #000000;
+    --color-background-light: #fafafa;
+
+    /* CONFIG */
+    --items-list-columns: 4;
+    --items-list-min-col-size: 250px;
+
+    /* OFFSETS */
+    --site-padding-x: 2rem;
+    /* 32px */
     --max-content-width: var(--desktop-min);
 
+    /* ANIMATIONS */
     --transition-duration: 0.2s;
+
+    /* DECORATIONS */
     --border-radius: 8px;
 
     /* Media values */
     --desktop-min: 1280px;
     --mobile-max: 767px;
     --tablet-min: 768px;
-    --tablet-max: 1279;
+    --tablet-max: 1279px;
+}
+
+/* CSS variables aren`t working in CSS media queries */
+
+/* DESKTOP */
+@media screen and (min-width: 1280px) {}
+/* TABLET */
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+    :root {
+        --site-padding-x: 1rem;
+    }
+}
+/* PHONE */
+@media screen and (max-width: 767px) {
+    :root {
+        --site-padding-x: 0.5rem;
+    }
 }

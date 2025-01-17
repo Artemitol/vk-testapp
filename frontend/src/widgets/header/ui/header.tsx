@@ -1,9 +1,21 @@
+import { Link } from "react-router-dom"
 import classes from "./header.module.css"
+import { Navbar, NavBarConfiguration } from "@widgets/navbar"
+import { Logo } from "@shared/ui/icons"
 
-export function Header() {
+type HeaderProps = {
+    navConfig: NavBarConfiguration
+}
+
+export function Header({ navConfig }: HeaderProps) {
     return (
         <header className={classes.header}>
-            <span>Hello World! This is React Ts application</span>
+            <div className={classes.inner}>
+                <Link to='/'>
+                    <Logo />
+                </Link>
+                <Navbar config={navConfig} />
+            </div>
         </header>
     )
 }
