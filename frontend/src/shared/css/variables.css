@@ -1,11 +1,16 @@
 :root {
+    --color-background-dark: #12161e;
+    --color-background-light: #ececec;
     --site-padding-x: 100px;
     --max-content-width: var(--desktop-min);
+
+    --transition-duration: 0.2s;
+    --border-radius: 8px;
 
     /* Media values */
     --desktop-min: 1280px;
     --mobile-max: 767px;
     --tablet-min: 768px;
     --tablet-max: 1279;
-    
+
 }

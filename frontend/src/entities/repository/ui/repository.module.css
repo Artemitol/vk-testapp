@@ -3,5 +3,12 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: start;
+    padding: 1rem;
+    transition: transform var(--transition-duration) ease-out;
     border: 1px solid darkgray;
+    border-radius: var(--border-radius);
+
+    &:hover {
+        transform: scale(1.1, 1.1);
+    }
 }

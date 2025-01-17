@@ -44,6 +44,7 @@ export default [
             "import/no-unresolved": "off",
             "prettier/prettier": "warn",
             "cssPlugin/no-dupe-properties": "error",
+            "no-console": ["error", { allow: ["warn", "error"] }],
             "featureSliced/layers-slices": [
                 "error",
                 {

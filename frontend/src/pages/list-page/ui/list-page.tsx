@@ -1,11 +1,13 @@
 import { useGetRepositoriesListQuery } from "@entities/repository"
 import { repositoryMaper } from "@entities/repository"
 import { ItemsList } from "@widgets/items-list"
+import { useState } from "react"
 import { Toaster } from "sonner"
 
-const perPage = 3
+const perPage = 10
 
 export function ListPage() {
+    const [params, setParams] = useState({ perPage, currentPage: "" })
     const {
         data = [],
         isFetching,
@@ -13,7 +15,10 @@ export function ListPage() {
         isError,
         isSuccess,
     } = useGetRepositoriesListQuery({
-        params: { _per_page: perPage },
+        params: {
+            _per_page: params.perPage,
+            _page: Number(params.currentPage),
+        },
     })
     const currStatus = {
         isError,
@@ -24,6 +29,17 @@ export function ListPage() {
 
     return (
         <section>
+            <input
+                type='text'
+                value={params.currentPage}
+                onChange={(event) => {
+                    setParams((prev) => ({
+                        ...prev,
+                        currentPage: event.target.value,
+                    }))
+                    // refetch()
+                }}
+            />
             <ItemsList
                 data={data}
                 mapFunction={repositoryMaper}

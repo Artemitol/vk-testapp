@@ -16,7 +16,6 @@ type ItemsListProps<T> = {
 
 export function ItemsList<T>({ data, mapFunction, status }: ItemsListProps<T>) {
     if (data.length === 0 && status.isSuccess) {
-        console.log("no data")
         toast.info("No data was provided in response")
 
         return (
@@ -28,7 +27,6 @@ export function ItemsList<T>({ data, mapFunction, status }: ItemsListProps<T>) {
 
     if (status.isError) {
         toast.error("Request failed, check network panel")
-        console.log("error")
 
         return (
             <div className={classes.emptyList}>

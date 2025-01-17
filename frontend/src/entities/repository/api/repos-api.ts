@@ -12,12 +12,11 @@ export const repositoryApi = baseApi.injectEndpoints({
                 url: "/items",
                 params: {
                     ...options.params,
-                    _page: 1,
                 },
             }),
             transformResponse: (result) =>
+                // TODO: remove this weird object
                 repositoryDTOschema.array().parse(result.data),
-            keepUnusedDataFor: 300, // 5 min before invalidation
         }),
     }),
 })
