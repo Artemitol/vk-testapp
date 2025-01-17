@@ -1,5 +1,7 @@
 import classes from "./repository.module.css"
 import { RepositoryModel } from "../model/repository-model"
+import { Avatar, Card } from "antd"
+const { Meta } = Card
 
 type RepositoryProps = {
     data: RepositoryModel
@@ -7,23 +9,28 @@ type RepositoryProps = {
 
 export function Repository({ data }: RepositoryProps) {
     return (
-        <article className={classes.repositoryCard}>
-            <h3>{data.name}</h3>
-            <hr />
-            <div>
+        <Card hoverable>
+            <Meta
+                avatar={<Avatar src={data.owner.avatar_url} />}
+                title={data.name}
+                description={data.description}
+            >
+                {/* <h3>{data.name}</h3>
                 <div>
-                    <span>id: {data.id}</span>
-                </div>
-                <div>
-                    <img
-                        src={data.owner.avatar_url}
-                        alt='repo owner url'
-                        width=''
-                        height=''
-                        loading='lazy'
-                    />
-                </div>
-            </div>
-        </article>
+                    <div>
+                        <span>id: {data.id}</span>
+                    </div>
+                    <div>
+                        <img
+                            src={data.owner.avatar_url}
+                            alt='repo owner url'
+                            width=''
+                            height=''
+                            loading='lazy'
+                        />
+                    </div>
+                </div> */}
+            </Meta>
+        </Card>
     )
 }
