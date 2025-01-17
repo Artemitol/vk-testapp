@@ -5,13 +5,14 @@ export const repositoryApi = baseApi.injectEndpoints({
     endpoints: (create) => ({
         getRepositoriesList: create.query<
             RepositoryModel[],
-            { params: Record<string, unknown> }
+            { _per_page: number; _page: number }
         >({
-            query: (options) => ({
+            query: (options = { _page: 1, _per_page: 10 }) => ({
                 // TODO: remove this debug url
                 url: "/items",
                 params: {
-                    ...options.params,
+                    _page: options._page,
+                    _per_page: options._per_page,
                 },
             }),
             transformResponse: (result) =>

@@ -1,3 +1,4 @@
+import classes from "./list-page.module.css"
 import { useGetRepositoriesListQuery } from "@entities/repository"
 import { repositoryMaper } from "@entities/repository"
 import { ItemsList } from "@widgets/items-list"
@@ -7,7 +8,7 @@ import { Toaster } from "sonner"
 const perPage = 10
 
 export function ListPage() {
-    const [params, setParams] = useState({ perPage, currentPage: "" })
+    const [params, setParams] = useState({ perPage, currentPage: "1" })
     const {
         data = [],
         isFetching,
@@ -15,10 +16,8 @@ export function ListPage() {
         isError,
         isSuccess,
     } = useGetRepositoriesListQuery({
-        params: {
-            _per_page: params.perPage,
-            _page: Number(params.currentPage),
-        },
+        _per_page: params.perPage,
+        _page: Number(params.currentPage),
     })
     const currStatus = {
         isError,
@@ -28,7 +27,7 @@ export function ListPage() {
     }
 
     return (
-        <section>
+        <section className={classes.listPage}>
             <input
                 type='text'
                 value={params.currentPage}
@@ -37,7 +36,6 @@ export function ListPage() {
                         ...prev,
                         currentPage: event.target.value,
                     }))
-                    // refetch()
                 }}
             />
             <ItemsList

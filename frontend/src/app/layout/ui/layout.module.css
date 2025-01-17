@@ -6,11 +6,14 @@
 }
 
 .background {
-    position: absolute;
+    position: fixed;
     width: 100dvw;
     height: 100dvh;
     z-index: -999;
-    background-color: light-dark(var(--color-background-dark), var(--color-background-light));
+    background-color: light-dark(
+        var(--color-background-dark),
+        var(--color-background-light)
+    );
 }
 
 .page {
