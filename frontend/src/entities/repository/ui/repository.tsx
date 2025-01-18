@@ -8,10 +8,12 @@ type RepositoryProps = {
 
 export function Repository({ data }: RepositoryProps) {
     return (
-        <Card size='small' hoverable title={data.name} extra={"Actions"}>
+        <Card size='small' hoverable title={data.owner.login} extra={"Actions"}>
             <Meta
-                avatar={<Avatar alt='user image' src={data.owner.avatar_url} />}
-                title={`By: ${data.owner.login}`}
+                avatar={
+                    <Avatar src={data.owner.avatar_url} alt='user avatar' />
+                }
+                title={`Name: ${data.name}`}
                 description={data.description}
             />
         </Card>

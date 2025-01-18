@@ -1,6 +1,7 @@
 import { ReactNode } from "react"
 import classes from "./items-list.module.css"
 import { toast } from "sonner"
+import { Spin } from "antd"
 
 type ItemsListProps<T> = {
     perPage: number
@@ -20,34 +21,17 @@ export function ItemsList<T>({ data, mapFunction, status }: ItemsListProps<T>) {
 
         return (
             <div className={classes.emptyList}>
-                <h2>No data was provided in request</h2>
+                <h2>No data was provided in list</h2>
             </div>
         )
     }
 
-    if (status.isError) {
-        toast.error("Request failed, check network panel")
-
-        return (
-            <div className={classes.emptyList}>
-                <h2 className={classes.errorMessage}>
-                    Error acquired while making request
-                </h2>
+    return (
+        <div className={classes.wrapper}>
+            <div className={classes.itemsList}>{mapFunction(data)}</div>
+            <div className={classes.statusIndicator}>
+                {status.isFetching && <Spin size='large' />}
             </div>
-        )
-    }
-
-    if (status.isLoading || status.isFetching) {
-        return (
-            <div className={classes.emptyList}>
-                <h3>Loading...</h3>
-            </div>
-        )
-    }
-
-    if (status.isSuccess) {
-        toast.success("Successfully parsed repositories!")
-    }
-
-    return <div className={classes.itemsList}>{mapFunction(data)}</div>
+        </div>
+    )
 }

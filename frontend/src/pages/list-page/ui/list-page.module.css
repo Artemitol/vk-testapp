@@ -1,4 +1,5 @@
 .listPage {
     width: 100%;
     max-width: 100%;
+    overflow-anchor: none;
 }
