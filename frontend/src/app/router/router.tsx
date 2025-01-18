@@ -1,6 +1,7 @@
 import { Layout } from "../layout"
 import { Homepage } from "@pages/home-page"
 import { ListPage } from "@pages/list-page"
+import { SandboxPage } from "@pages/sandbox-page"
 import { createBrowserRouter } from "react-router-dom"
 
 export const router = createBrowserRouter(
@@ -19,6 +20,10 @@ export const router = createBrowserRouter(
                 {
                     path: "/repositories",
                     element: <ListPage />,
+                },
+                {
+                    path: "/sandbox",
+                    element: <SandboxPage />,
                 },
             ],
         },

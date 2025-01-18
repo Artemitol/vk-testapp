@@ -10,3 +10,14 @@ export const repositoryMaper = (repositories: RepositoryModel[]): ReactNode => {
 
     return data
 }
+
+export const repoMaperWithActionsSlot = (
+    repositories: RepositoryModel[],
+    menu: ReactNode
+): ReactNode => {
+    const data = repositories.map((repository) => (
+        <Repository key={repository.id} data={repository} menu={menu} />
+    ))
+
+    return data
+}

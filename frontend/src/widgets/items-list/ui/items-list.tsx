@@ -3,18 +3,27 @@ import classes from "./items-list.module.css"
 import { Spin } from "antd"
 
 type ItemsListProps<T> = {
-    perPage: number
     data: T[]
     mapFunction: (elements: T[]) => ReactNode
-    status: {
+    status?: {
         isLoading: boolean // Loading data (for first time)
         isFetching: boolean // Loading new data
         isError: boolean // Request finished with error
         isSuccess: boolean // Indicates that all went good
     }
+    actions?: ReactNode
 }
 
-export function ItemsList<T>({ data, mapFunction, status }: ItemsListProps<T>) {
+export function ItemsList<T>({
+    data,
+    mapFunction,
+    status = {
+        isError: false,
+        isFetching: false,
+        isLoading: false,
+        isSuccess: false,
+    },
+}: ItemsListProps<T>) {
     if (data.length === 0 && status.isSuccess) {
         return (
             <div className={classes.emptyList}>
