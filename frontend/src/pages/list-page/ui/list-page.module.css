@@ -3,3 +3,14 @@
     max-width: 100%;
     overflow-anchor: none;
 }
+
+.heading {
+    margin-bottom: 2rem;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}

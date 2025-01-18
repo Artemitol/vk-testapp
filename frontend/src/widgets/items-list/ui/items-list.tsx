@@ -1,6 +1,5 @@
 import { ReactNode } from "react"
 import classes from "./items-list.module.css"
-import { toast } from "sonner"
 import { Spin } from "antd"
 
 type ItemsListProps<T> = {
@@ -17,8 +16,6 @@ type ItemsListProps<T> = {
 
 export function ItemsList<T>({ data, mapFunction, status }: ItemsListProps<T>) {
     if (data.length === 0 && status.isSuccess) {
-        toast.info("No data was provided in response")
-
         return (
             <div className={classes.emptyList}>
                 <h2>No data was provided in list</h2>

@@ -9,7 +9,9 @@ export {
     selectSortDirection,
     selectSortField,
     setRepositories,
+    addRepositories,
     sortRepositories,
+    clearRepositories,
 } from "./model/repository-slice"
 export { repositoryApi, useGetRepositoriesListQuery } from "./api/repos-api"
 export { repositoryMaper } from "./lib/maper"

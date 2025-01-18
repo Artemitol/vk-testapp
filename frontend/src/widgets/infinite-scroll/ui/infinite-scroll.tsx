@@ -1,20 +1,23 @@
 import classes from "./infinite-scroll.module.css"
 import {
-    RepositoryModel,
     useGetRepositoriesListQuery,
     repositoryMaper,
+    addRepositories,
+    selectReposList,
 } from "@entities/repository"
+import { selectPerPage, selectStartPage } from "@widgets/actions-bar"
 import { ItemsList } from "@widgets/items-list"
 import { Button } from "antd"
 import { useState, useEffect } from "react"
-import { Toaster } from "sonner"
-
-const perPage = 10
+import { useDispatch, useSelector } from "react-redux"
+import { toast, Toaster } from "sonner"
 
 export function InfiniteScoll() {
-    const [params, setParams] = useState({ perPage, currentPage: "1" })
-    const [displayedData, setDisplayedData] = useState<RepositoryModel[]>([])
-
+    const dispatch = useDispatch()
+    const perPage = useSelector(selectPerPage)
+    const startPage = useSelector(selectStartPage)
+    const repositories = useSelector(selectReposList)
+    const [page, setPage] = useState<number>(startPage)
     const {
         data = [],
         isFetching,
@@ -22,8 +25,8 @@ export function InfiniteScoll() {
         isError,
         isSuccess,
     } = useGetRepositoriesListQuery({
-        _per_page: params.perPage,
-        _page: Number(params.currentPage),
+        _per_page: perPage,
+        _page: page,
     })
     const currStatus = {
         isError,
@@ -34,14 +37,17 @@ export function InfiniteScoll() {
 
     useEffect(() => {
         if (isSuccess) {
-            setDisplayedData((prev) => [...prev, ...data])
+            toast.success("Request finished successfully!")
+            dispatch(addRepositories(data))
+        } else if (isError) {
+            toast.error("Request failed")
         }
     }, [data, isSuccess])
 
     return (
         <div className={classes.infiniteScollWrapper}>
             <ItemsList
-                data={displayedData}
+                data={repositories}
                 mapFunction={repositoryMaper}
                 perPage={perPage}
                 status={currStatus}
@@ -51,10 +57,7 @@ export function InfiniteScoll() {
                     type='primary'
                     onClick={() =>
                         // Inncrements current page
-                        setParams((prev) => ({
-                            ...prev,
-                            currentPage: String(Number(prev.currentPage) + 1),
-                        }))
+                        setPage((prev) => prev + 1)
                     }
                 >
                     Load more repos
