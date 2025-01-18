@@ -9,11 +9,21 @@
 .config {
     display: flex;
     flex-direction: row;
-    gap: clamp(0.25rem, 2vw, 0.75rem);
+    justify-content: space-between;
+    flex-wrap: wrap;
+    /* width: 100%; */
 }
 
 .pageNumber {
     display: flex;
     flex-direction: row;
     gap: 0.2rem;
+}
+
+.sort {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.1rem;
+    width: 100px;
 }

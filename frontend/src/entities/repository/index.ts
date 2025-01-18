@@ -15,3 +15,4 @@ export {
 } from "./model/repository-slice"
 export { repositoryApi, useGetRepositoriesListQuery } from "./api/repos-api"
 export { repositoryMaper } from "./lib/maper"
+export type { SortDirection, SortField } from "./model/repository-slice"

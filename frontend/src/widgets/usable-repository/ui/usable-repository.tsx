@@ -3,6 +3,7 @@ import { Repository, RepositoryModel } from "@entities/repository"
 import { Dropdown, MenuProps } from "antd"
 import { useDispatch } from "react-redux"
 import { removeRepository } from "@entities/repository"
+import { toast } from "sonner"
 
 type UsableRepositoryProps = {
     data: RepositoryModel
@@ -24,6 +25,7 @@ export function UsableRepository({ data }: UsableRepositoryProps) {
             danger: true,
             onClick: () => {
                 dispatch(removeRepository(Number(data.id)))
+                toast.success("Deleted repository!")
             },
         },
     ]

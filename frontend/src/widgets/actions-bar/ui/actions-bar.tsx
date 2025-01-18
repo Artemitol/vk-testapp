@@ -1,14 +1,19 @@
-import { Button, Dropdown, InputNumber, Tooltip } from "antd"
+import { Button, InputNumber, Tooltip } from "antd"
 import classes from "./action-bar.module.css"
 import { PlusOutlined } from "@ant-design/icons"
 import { useDispatch, useSelector } from "react-redux"
 import { changePerPage, selectPerPage } from "../model/actions-bar-slice"
 import { useState } from "react"
-import { clearRepositories } from "@entities/repository"
+import {
+    clearRepositories,
+    SortDirection,
+    sortRepositories,
+} from "@entities/repository"
 
 type ActionsBarState = {
     pageNumber: number
     perPage: number
+    sortDirection: SortDirection
 }
 
 export function ActionsBar() {
@@ -17,15 +22,32 @@ export function ActionsBar() {
     const [local, setLocal] = useState<ActionsBarState>({
         perPage: useSelector(selectPerPage),
         pageNumber: 1,
+        sortDirection: "asc",
     })
 
     return (
         <div className={classes.actionBar}>
             <div className={classes.config}>
-                <Dropdown />
+                <div className={classes.sort}>
+                    <Button
+                        onClick={() => {
+                            dispatch(sortRepositories({ direction: "asc" }))
+                        }}
+                    >
+                        Asc
+                    </Button>
+                    <Button
+                        onClick={() => {
+                            dispatch(sortRepositories({ direction: "desc" }))
+                        }}
+                    >
+                        Desc
+                    </Button>
+                </div>
+                {/* <Dropdown /> */}
                 <div className={classes.pageNumber}>
                     <InputNumber
-                        placeholder='page'
+                        placeholder='per page'
                         value={local.perPage.toString()}
                         onChange={(value) =>
                             setLocal((prev) => ({
@@ -46,7 +68,7 @@ export function ActionsBar() {
                         </Button>
                     </Tooltip>
                 </div>
-                <Dropdown />
+                {/* <Dropdown /> */}
             </div>
             <Button
                 size='large'

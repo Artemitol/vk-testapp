@@ -9,8 +9,4 @@ export const NavbarConfiguration: NavBarConfiguration = [
         label: "Repositories list",
         path: "/repositories",
     },
-    {
-        label: "Sandbox mode",
-        path: "/sandbox",
-    },
 ]

@@ -7,10 +7,14 @@ import {
 } from "@entities/repository"
 import { selectPerPage, selectStartPage } from "@widgets/actions-bar"
 import { ItemsList } from "@widgets/items-list"
+import {
+    usableRepoMaper,
+    UsableRepositoryModel,
+} from "@widgets/usable-repository"
 import { Button } from "antd"
 import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { toast, Toaster } from "sonner"
+import { toast } from "sonner"
 
 export function InfiniteScoll() {
     const dispatch = useDispatch()
@@ -46,10 +50,9 @@ export function InfiniteScoll() {
 
     return (
         <div className={classes.infiniteScollWrapper}>
-            <ItemsList
+            <ItemsList<UsableRepositoryModel>
                 data={repositories}
-                mapFunction={repositoryMaper}
-                perPage={perPage}
+                mapFunction={usableRepoMaper}
                 status={currStatus}
             />
             <div className={classes.actions}>
@@ -63,7 +66,6 @@ export function InfiniteScoll() {
                     Load more repos
                 </Button>
             </div>
-            <Toaster richColors duration={3500} theme='system' closeButton />
         </div>
     )
 }

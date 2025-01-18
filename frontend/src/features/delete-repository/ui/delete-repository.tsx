@@ -2,7 +2,7 @@ import { DeleteOutlined } from "@ant-design/icons"
 import { removeRepository, RepositoryModel } from "@entities/repository"
 import { Button } from "antd"
 import { useDispatch } from "react-redux"
-import { toast, Toaster } from "sonner"
+import { toast } from "sonner"
 import { z } from "zod"
 
 type DeleteRepositoryProps = {
@@ -35,7 +35,6 @@ export function DeleteRepository({ id }: DeleteRepositoryProps) {
             >
                 Delete
             </Button>
-            <Toaster duration={3500} closeButton richColors />
         </>
     )
 }

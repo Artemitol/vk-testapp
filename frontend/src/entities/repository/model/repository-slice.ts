@@ -2,8 +2,8 @@ import { createSlice } from "@reduxjs/toolkit"
 import type { PayloadAction } from "@reduxjs/toolkit"
 import { RepositoryModel } from "./repository-model"
 
-type SortDirection = "asc" | "desc"
-type SortField = "id" | "name"
+export type SortDirection = "asc" | "desc"
+export type SortField = "id" | "name"
 type SortedReposStateType = {
     reposList: RepositoryModel[]
     sortDirection: SortDirection
@@ -50,16 +50,14 @@ export const repositoriesSlice = createSlice({
         sortRepositories: (
             state,
             action: PayloadAction<{
-                field: SortField
                 direction: SortDirection
             }>
         ) => {
-            state.sortField = action.payload.field
             state.sortDirection = action.payload.direction
             let comparison = 0
 
             state.reposList = state.reposList.sort((a, b) => {
-                if (action.payload.field === "name") {
+                if (state.sortField === "name") {
                     comparison = a.owner.login.localeCompare(b.name)
                 } else {
                     comparison = Number(a.id) - Number(b.id)
