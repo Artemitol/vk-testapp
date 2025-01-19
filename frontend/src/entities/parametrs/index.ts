@@ -1,7 +1,7 @@
 export {
     changePerPage,
-    changeStartPage,
     parametersSlice,
     selectPerPage,
-    selectStartPage,
+    changeQuery,
+    selectQuery,
 } from "./model/parametrs-slice"

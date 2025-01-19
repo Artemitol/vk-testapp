@@ -1,6 +1,10 @@
-import { SortDirection, sortRepositories } from "@entities/repository"
-import { Button } from "antd"
-import { useDispatch } from "react-redux"
+import {
+    selectReposCount,
+    SortDirection,
+    sortRepositories,
+} from "@entities/repository"
+import { Button, Tooltip } from "antd"
+import { useDispatch, useSelector } from "react-redux"
 import { toast } from "sonner"
 
 type SortRepositoriesProps = {
@@ -10,6 +14,7 @@ type SortRepositoriesProps = {
 
 export function SortRepositories({ direction, label }: SortRepositoriesProps) {
     const dispatch = useDispatch()
+    const reposCount = useSelector(selectReposCount)
 
     function clickHandler() {
         try {
@@ -21,5 +26,15 @@ export function SortRepositories({ direction, label }: SortRepositoriesProps) {
         }
     }
 
-    return <Button onClick={clickHandler}>{label}</Button>
+    return (
+        <Tooltip title={`Sorts all repos in ${direction} direction`}>
+            <Button
+                onClick={clickHandler}
+                // Checking that array of repos is not empty
+                disabled={reposCount === 0 ? true : false}
+            >
+                {label}
+            </Button>
+        </Tooltip>
+    )
 }

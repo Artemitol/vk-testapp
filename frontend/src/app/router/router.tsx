@@ -2,6 +2,7 @@ import { Layout } from "../layout"
 import { Homepage } from "@pages/home-page"
 import { ListPage } from "@pages/list-page"
 import { createBrowserRouter } from "react-router-dom"
+import { CreateRepositoryPage } from "@pages/create-repository-page"
 
 export const router = createBrowserRouter(
     [
@@ -19,6 +20,10 @@ export const router = createBrowserRouter(
                 {
                     path: "/repositories",
                     element: <ListPage />,
+                },
+                {
+                    path: "/create-repository",
+                    element: <CreateRepositoryPage />,
                 },
             ],
         },

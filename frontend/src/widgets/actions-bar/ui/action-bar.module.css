@@ -14,9 +14,9 @@
     /* width: 100%; */
 }
 
-.pageNumber {
+.formBlock {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 0.2rem;
 }
 

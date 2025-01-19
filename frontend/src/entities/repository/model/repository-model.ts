@@ -111,3 +111,15 @@ export const repositoryDTOschema = z.object({
 })
 
 export type RepositoryModel = z.infer<typeof repositoryDTOschema>
+
+export type ResponceSchema = {
+    items: RepositoryModel[]
+    total_count: number
+    incomplete_results: boolean
+}
+
+export type RequestParametrsModel = {
+    per_page: number
+    page: number
+    q: string
+}

@@ -1,9 +1,10 @@
-import { selectPerPage, selectStartPage } from "@entities/parametrs"
+import { selectPerPage, selectQuery } from "@entities/parametrs"
 import classes from "./infinite-scroll.module.css"
 import {
     useGetRepositoriesListQuery,
     addRepositories,
     selectReposList,
+    selectReposCount,
 } from "@entities/repository"
 import { ItemsList } from "@widgets/items-list"
 import {
@@ -18,9 +19,11 @@ import { toast } from "sonner"
 export function InfiniteScoll() {
     const dispatch = useDispatch()
     const perPage = useSelector(selectPerPage)
-    const startPage = useSelector(selectStartPage)
+    // const startPage = useSelector(selectStartPage)
     const repositories = useSelector(selectReposList)
-    const [page, setPage] = useState<number>(startPage)
+    const reposCount = useSelector(selectReposCount)
+    const query = useSelector(selectQuery)
+    const [page, setPage] = useState<number>(1)
     const {
         data = [],
         isFetching,
@@ -30,7 +33,7 @@ export function InfiniteScoll() {
     } = useGetRepositoriesListQuery({
         per_page: perPage,
         page: page,
-        q: "java",
+        q: query,
     })
     const currStatus = {
         isError,
@@ -60,6 +63,8 @@ export function InfiniteScoll() {
                     iconPosition='end'
                     loading={isLoading || isFetching}
                     type='primary'
+                    // Checks that repos list not empty
+                    disabled={reposCount === 0 ? true : false}
                     onClick={() =>
                         // Inncrements current page
                         setPage((prev) => prev + 1)

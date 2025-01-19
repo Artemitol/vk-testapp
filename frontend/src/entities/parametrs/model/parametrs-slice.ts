@@ -1,13 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 type ActionsBarState = {
-    startPage: number
     perPage: number
     query: string
 }
 
 const initialState: ActionsBarState = {
-    startPage: 1,
     perPage: 10,
     query: "javascript",
 }
@@ -16,9 +14,6 @@ export const parametersSlice = createSlice({
     name: "actions-bar",
     initialState: initialState,
     reducers: {
-        changeStartPage: (state, action: PayloadAction<number>) => {
-            state.startPage = action.payload
-        },
         changePerPage: (state, action: PayloadAction<number>) => {
             state.perPage = action.payload
         },
@@ -27,11 +22,10 @@ export const parametersSlice = createSlice({
         },
     },
     selectors: {
-        selectStartPage: (state) => state.startPage,
         selectPerPage: (state) => state.perPage,
-        selectQuery: (state) => state.perPage,
+        selectQuery: (state) => state.query,
     },
 })
 
-export const { selectPerPage, selectStartPage } = parametersSlice.selectors
-export const { changePerPage, changeStartPage } = parametersSlice.actions
+export const { selectPerPage, selectQuery } = parametersSlice.selectors
+export const { changePerPage, changeQuery } = parametersSlice.actions
