@@ -7,6 +7,7 @@ import { z } from "zod"
 
 const envSchema = z.object({
     VITE_BACKEND_URL: z.string().url(),
+    VITE_GITHUB_API_TOKEN: z.string(),
 })
 
 // https://vitejs.dev/config/

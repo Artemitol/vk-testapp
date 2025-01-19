@@ -1,7 +1,7 @@
 import { z } from "zod"
 
 export const repositoryDTOschema = z.object({
-    id: z.string(),
+    id: z.number(),
     node_id: z.string(),
     name: z.string(),
     full_name: z.string(),
