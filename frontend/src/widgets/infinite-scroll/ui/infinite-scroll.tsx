@@ -1,11 +1,10 @@
+import { selectPerPage, selectStartPage } from "@entities/parametrs"
 import classes from "./infinite-scroll.module.css"
 import {
     useGetRepositoriesListQuery,
-    repositoryMaper,
     addRepositories,
     selectReposList,
 } from "@entities/repository"
-import { selectPerPage, selectStartPage } from "@widgets/actions-bar"
 import { ItemsList } from "@widgets/items-list"
 import {
     usableRepoMaper,
@@ -29,8 +28,9 @@ export function InfiniteScoll() {
         isError,
         isSuccess,
     } = useGetRepositoriesListQuery({
-        _per_page: perPage,
-        _page: page,
+        per_page: perPage,
+        page: page,
+        q: "java",
     })
     const currStatus = {
         isError,
@@ -57,6 +57,8 @@ export function InfiniteScoll() {
             />
             <div className={classes.actions}>
                 <Button
+                    iconPosition='end'
+                    loading={isLoading || isFetching}
                     type='primary'
                     onClick={() =>
                         // Inncrements current page

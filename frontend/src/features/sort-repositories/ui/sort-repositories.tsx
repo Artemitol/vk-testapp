@@ -5,9 +5,10 @@ import { toast } from "sonner"
 
 type SortRepositoriesProps = {
     direction: SortDirection
+    label: string
 }
 
-export function SortRepositories({ direction }: SortRepositoriesProps) {
+export function SortRepositories({ direction, label }: SortRepositoriesProps) {
     const dispatch = useDispatch()
 
     function clickHandler() {
@@ -20,5 +21,5 @@ export function SortRepositories({ direction }: SortRepositoriesProps) {
         }
     }
 
-    return <Button onClick={clickHandler}>Sort repositories</Button>
+    return <Button onClick={clickHandler}>{label}</Button>
 }

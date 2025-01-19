@@ -2,13 +2,10 @@ import { Button, InputNumber, Tooltip } from "antd"
 import classes from "./action-bar.module.css"
 import { PlusOutlined } from "@ant-design/icons"
 import { useDispatch, useSelector } from "react-redux"
-import { changePerPage, selectPerPage } from "../model/actions-bar-slice"
 import { useState } from "react"
-import {
-    clearRepositories,
-    SortDirection,
-    sortRepositories,
-} from "@entities/repository"
+import { clearRepositories, SortDirection } from "@entities/repository"
+import { changePerPage, selectPerPage } from "@entities/parametrs"
+import { SortRepositories } from "@features/sort-repositories"
 
 type ActionsBarState = {
     pageNumber: number
@@ -29,34 +26,27 @@ export function ActionsBar() {
         <div className={classes.actionBar}>
             <div className={classes.config}>
                 <div className={classes.sort}>
-                    <Button
-                        onClick={() => {
-                            dispatch(sortRepositories({ direction: "asc" }))
-                        }}
-                    >
-                        Asc
-                    </Button>
-                    <Button
-                        onClick={() => {
-                            dispatch(sortRepositories({ direction: "desc" }))
-                        }}
-                    >
-                        Desc
-                    </Button>
+                    <SortRepositories direction='desc' label='Desc sort' />
+                    <SortRepositories direction='asc' label='Asc sort' />
                 </div>
                 {/* <Dropdown /> */}
                 <div className={classes.pageNumber}>
-                    <InputNumber
-                        placeholder='per page'
-                        value={local.perPage.toString()}
-                        onChange={(value) =>
-                            setLocal((prev) => ({
-                                ...prev,
-                                perPage: Number(value) || 0,
-                            }))
-                        }
-                    />
-                    <Tooltip title='Applyies new changes to the requests config'>
+                    <Tooltip title='Change how many pages will be displayed per page'>
+                        <div className={classes.formBlock}>
+                            <label>Per page</label>
+                            <InputNumber
+                                placeholder='per page'
+                                value={local.perPage.toString()}
+                                onChange={(value) =>
+                                    setLocal((prev) => ({
+                                        ...prev,
+                                        perPage: Number(value) || 0,
+                                    }))
+                                }
+                            />
+                        </div>
+                    </Tooltip>
+                    <Tooltip title='Applyies new changes to the request config'>
                         <Button
                             type='default'
                             onClick={() => {
