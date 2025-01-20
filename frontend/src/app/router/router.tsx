@@ -3,7 +3,6 @@ import { Homepage } from "@pages/home-page"
 import { ListPage } from "@pages/list-page"
 import { createBrowserRouter } from "react-router-dom"
 import { CreateRepositoryPage } from "@pages/create-repository-page"
-import { RepositoryPage } from "@pages/repository-page"
 import { Spin } from "antd"
 
 export const router = createBrowserRouter(
@@ -34,17 +33,6 @@ export const router = createBrowserRouter(
                     errorElement: (
                         <div>
                             Something went wrong on repositories page....
-                            <Spin />
-                        </div>
-                    ),
-                },
-                {
-                    path: "/repositories/:id",
-                    element: <RepositoryPage />,
-                    errorElement: (
-                        <div>
-                            Something went wrong on repository page or this repo
-                            doesnt exist....
                             <Spin />
                         </div>
                     ),

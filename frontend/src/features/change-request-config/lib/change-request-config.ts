@@ -22,7 +22,8 @@ export const useChangeReqConfig = () => {
         } else if (perPage === per_page && query === q) {
             toast.info("You are trying to change config without NEW values")
         } else {
-            // Clearing state of repos, because they aren`t actual (new params means new repos)
+            // Clearing state of repos
+            // because they aren`t actual (new params means new request)
             dispatch(clearRepositories())
 
             if (per_page) {

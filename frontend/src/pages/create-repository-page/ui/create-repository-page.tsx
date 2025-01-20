@@ -20,7 +20,9 @@ export function CreateRepositoryPage() {
         try {
             // Used default value because this will not be comfortable for user
             // to insert data into +-200 inputs (schema in @entities/repositories/model)
-            const newRepo: RepositoryModel = defaultRepositoryValues
+            const newRepo: RepositoryModel = JSON.parse(
+                JSON.stringify(defaultRepositoryValues)
+            )
 
             newRepo.owner.login = z
                 .string()
