@@ -18,7 +18,7 @@ Repoviewer - проект, который направлен на отображ
   docker-compose up -d --build
   ```
 
-## Детали реализации [click me](./frontend/README.md)
+## Детали реализации [click me](./frontend/)
 В директории `/frontend` в файле `README.md` описана документация с точки зрения реализации frontend приложения
 
 
