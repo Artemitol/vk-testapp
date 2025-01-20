@@ -5,6 +5,7 @@ import {
     addRepositories,
     selectReposList,
     selectReposCount,
+    clearRepositories,
 } from "@entities/repository"
 import { ItemsList } from "@widgets/items-list"
 import {
@@ -19,7 +20,6 @@ import { toast } from "sonner"
 export function InfiniteScoll() {
     const dispatch = useDispatch()
     const perPage = useSelector(selectPerPage)
-    // const startPage = useSelector(selectStartPage)
     const repositories = useSelector(selectReposList)
     const reposCount = useSelector(selectReposCount)
     const query = useSelector(selectQuery)
@@ -41,6 +41,12 @@ export function InfiniteScoll() {
         isLoading,
         isSuccess,
     }
+
+    useEffect(() => {
+        return () => {
+            dispatch(clearRepositories())
+        }
+    }, [])
 
     useEffect(() => {
         if (isSuccess) {

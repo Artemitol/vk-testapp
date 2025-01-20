@@ -22,38 +22,28 @@ export const repositoriesSlice = createSlice({
     name: "repositories",
     initialState,
     reducers: {
-        // Add new repository
         addRepository: (state, action: PayloadAction<RepositoryModel>) => {
             state.reposList.push(action.payload)
             state.reposCount += 1
         },
-
-        // Add repositories
         addRepositories: (state, action: PayloadAction<RepositoryModel[]>) => {
             state.reposList.push(...action.payload)
             state.reposCount += action.payload.length
         },
-
-        // Delete repository by id
         removeRepository: (state, action: PayloadAction<number>) => {
             state.reposList = state.reposList.filter(
                 (repo) => Number(repo.id) !== action.payload
             )
             state.reposCount -= 1
         },
-
         clearRepositories: (state) => {
             state.reposList = initialState.reposList
             state.reposCount = 0
         },
-
-        // Replace all data
         setRepositories: (state, action: PayloadAction<RepositoryModel[]>) => {
             state.reposList = action.payload
             state.reposCount = action.payload.length
         },
-
-        // Sort repositories by given example
         sortRepositories: (
             state,
             action: PayloadAction<{
