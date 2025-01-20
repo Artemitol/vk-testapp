@@ -1,9 +1,6 @@
 # Repoviewer
 
 ## Список используемых технологий
-
-Here is list of all technologies used in project:
-
 1. React
 2. Redux
 3. RTK query
