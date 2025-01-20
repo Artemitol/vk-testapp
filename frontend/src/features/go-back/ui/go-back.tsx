@@ -11,7 +11,7 @@ export function GoBack({ value }: GoBackProps) {
 
     function clickHandler() {
         // Navigates user to the last visited route
-        navigate("../")
+        navigate(-1)
     }
 
     return (
