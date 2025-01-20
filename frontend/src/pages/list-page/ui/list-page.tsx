@@ -1,7 +1,9 @@
-import { InfiniteScoll } from "@widgets/infinite-scroll"
-import classes from "./list-page.module.css"
 import { Toaster } from "sonner"
+
 import { ActionsBar } from "@widgets/actions-bar"
+import { InfiniteScoll } from "@widgets/infinite-scroll"
+
+import classes from "./list-page.module.css"
 
 export function ListPage() {
     return (

@@ -1,6 +1,8 @@
 import { DeleteOutlined } from "@ant-design/icons"
-import { RepositoryModel } from "@entities/repository"
 import { Button } from "antd"
+
+import { RepositoryModel } from "@entities/repository"
+
 import { useDeleteRepository } from "../lib/delete-repository"
 
 type DeleteRepositoryProps = {

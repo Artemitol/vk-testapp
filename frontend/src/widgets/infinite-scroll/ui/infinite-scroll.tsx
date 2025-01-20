@@ -1,21 +1,24 @@
-import { selectPerPage, selectQuery } from "@entities/parametrs"
-import classes from "./infinite-scroll.module.css"
-import {
-    useGetRepositoriesListQuery,
-    addRepositories,
-    selectReposList,
-    selectReposCount,
-    clearRepositories,
-} from "@entities/repository"
-import { ItemsList } from "@widgets/items-list"
-import {
-    usableRepoMaper,
-    UsableRepositoryModel,
-} from "@widgets/usable-repository"
 import { Button } from "antd"
-import { useState, useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { toast } from "sonner"
+
+import { ItemsList } from "@widgets/items-list"
+import {
+    UsableRepositoryModel,
+    usableRepoMaper,
+} from "@widgets/usable-repository"
+
+import { selectPerPage, selectQuery } from "@entities/parametrs"
+import {
+    addRepositories,
+    clearRepositories,
+    selectReposCount,
+    selectReposList,
+    useGetRepositoriesListQuery,
+} from "@entities/repository"
+
+import classes from "./infinite-scroll.module.css"
 
 export function InfiniteScoll() {
     const dispatch = useDispatch()

@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom"
-import classes from "./header.module.css"
-import { Navbar, NavBarConfiguration } from "@widgets/navbar"
+
+import { NavBarConfiguration, Navbar } from "@widgets/navbar"
+
 import { Logo } from "@shared/ui/icons"
+
+import classes from "./header.module.css"
 
 type HeaderProps = {
     navConfig: NavBarConfiguration

@@ -2,14 +2,14 @@
 // import { FlatCompat } from "@eslint/eslintrc"
 // import path from "path"
 // import { fileURLToPath } from "url"
-import pluginJs from "@eslint/js"
-import tseslint from "typescript-eslint"
-import pluginReact from "eslint-plugin-react"
-import eslintConfigPrettier from "eslint-config-prettier"
-import eslintPluginPrettier from "eslint-plugin-prettier"
 import featureSliced from "@conarti/eslint-plugin-feature-sliced"
-import importPlugin from "eslint-plugin-import"
+import pluginJs from "@eslint/js"
+import eslintConfigPrettier from "eslint-config-prettier"
 import cssPlugin from "eslint-plugin-css"
+import importPlugin from "eslint-plugin-import"
+import eslintPluginPrettier from "eslint-plugin-prettier"
+import pluginReact from "eslint-plugin-react"
+import tseslint from "typescript-eslint"
 
 // All code below is to make .eslintrc configs flat
 // ------------------------------------------------------------
@@ -57,6 +57,34 @@ export default [
             ],
             "featureSliced/absolute-relative": "error",
             "featureSliced/public-api": "error",
+            "import/order": [
+                "error",
+                {
+                    alphabetize: { order: "asc", caseInsensitive: true },
+                    "newlines-between": "always",
+                    pathGroups: [
+                        "@processes/**",
+                        "@pages/**",
+                        "@widgets/**",
+                        "@features/**",
+                        "@entities/**",
+                        "@shared/**",
+                    ].map((pattern) => ({
+                        pattern,
+                        group: "internal",
+                        position: "after",
+                    })),
+                    pathGroupsExcludedImportTypes: ["builtin"],
+                    groups: [
+                        "builtin",
+                        "external",
+                        "internal",
+                        "parent",
+                        "sibling",
+                        "index",
+                    ],
+                },
+            ],
         },
         settings: {
             settings: {

@@ -1,6 +1,7 @@
-import { ReactNode } from "react"
-import classes from "./items-list.module.css"
 import { Spin } from "antd"
+import { ReactNode } from "react"
+
+import classes from "./items-list.module.css"
 
 type ItemsListProps<T> = {
     data: T[]

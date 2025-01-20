@@ -1,6 +1,8 @@
 import { PlusOutlined } from "@ant-design/icons"
-import { RepositoryModel } from "@entities/repository"
 import { Button, Tooltip } from "antd"
+
+import { RepositoryModel } from "@entities/repository"
+
 import { useCreateRepository } from "../lib/create-repository"
 
 type CreateRepositoryProps = {

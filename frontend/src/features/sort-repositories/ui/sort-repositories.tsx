@@ -1,10 +1,12 @@
-import {
-    selectReposCount,
-    SortDirection,
-    SortField,
-} from "@entities/repository"
 import { Button, Tooltip } from "antd"
 import { useSelector } from "react-redux"
+
+import {
+    SortDirection,
+    SortField,
+    selectReposCount,
+} from "@entities/repository"
+
 import { useSortRepositories } from "../lib/sort-repositories"
 
 type SortRepositoriesProps = {

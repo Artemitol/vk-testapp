@@ -1,9 +1,10 @@
-import { RouterProvider } from "react-router-dom"
 import "./index.css"
-import { Provider } from "react-redux"
-import { store } from "./store/store"
-import { router } from "./router/router"
 import { ConfigProvider, theme } from "antd"
+import { Provider } from "react-redux"
+import { RouterProvider } from "react-router-dom"
+
+import { router } from "./router/router"
+import { store } from "./store/store"
 
 export function App() {
     const prefersDarkTheme =

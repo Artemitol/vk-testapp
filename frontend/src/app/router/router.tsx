@@ -1,9 +1,11 @@
-import { Layout } from "../layout"
+import { Spin } from "antd"
+import { createBrowserRouter } from "react-router-dom"
+
+import { CreateRepositoryPage } from "@pages/create-repository-page"
 import { Homepage } from "@pages/home-page"
 import { ListPage } from "@pages/list-page"
-import { createBrowserRouter } from "react-router-dom"
-import { CreateRepositoryPage } from "@pages/create-repository-page"
-import { Spin } from "antd"
+
+import { Layout } from "../layout"
 
 export const router = createBrowserRouter(
     [

@@ -1,6 +1,7 @@
-import { addRepository, RepositoryModel } from "@entities/repository"
 import { useDispatch } from "react-redux"
 import { toast } from "sonner"
+
+import { RepositoryModel, addRepository } from "@entities/repository"
 
 type CreateRepoStatus = "error" | "ok"
 

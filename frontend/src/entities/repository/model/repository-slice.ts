@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 import type { PayloadAction } from "@reduxjs/toolkit"
+
 import { RepositoryModel } from "./repository-model"
 
 export type SortDirection = "asc" | "desc"

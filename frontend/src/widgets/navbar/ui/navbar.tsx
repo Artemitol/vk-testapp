@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom"
-import classes from "./navbar.module.css"
+
 import { NavBarConfiguration } from "../model/navbar-model"
+
+import classes from "./navbar.module.css"
 
 export function Navbar({ config }: { config: NavBarConfiguration }) {
     let key = 1

@@ -1,10 +1,11 @@
+import { useDispatch } from "react-redux"
+import { toast } from "sonner"
+
 import {
     SortDirection,
     SortField,
     sortRepositories,
 } from "@entities/repository"
-import { useDispatch } from "react-redux"
-import { toast } from "sonner"
 
 export const useSortRepositories = () => {
     const dispatch = useDispatch()

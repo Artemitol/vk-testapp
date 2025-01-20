@@ -1,9 +1,10 @@
-import { EditOutlined, DeleteOutlined } from "@ant-design/icons"
-import { Repository, RepositoryModel } from "@entities/repository"
+import { DeleteOutlined, EditOutlined } from "@ant-design/icons"
 import { Dropdown, MenuProps } from "antd"
 import { useDispatch } from "react-redux"
-import { removeRepository } from "@entities/repository"
 import { toast } from "sonner"
+
+import { removeRepository } from "@entities/repository"
+import { Repository, RepositoryModel } from "@entities/repository"
 
 type UsableRepositoryProps = {
     data: RepositoryModel

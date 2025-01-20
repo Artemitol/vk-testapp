@@ -1,3 +1,6 @@
+import { useDispatch, useSelector } from "react-redux"
+import { toast } from "sonner"
+
 import {
     changePerPage,
     changeQuery,
@@ -5,8 +8,6 @@ import {
     selectQuery,
 } from "@entities/parametrs"
 import { clearRepositories } from "@entities/repository"
-import { useDispatch, useSelector } from "react-redux"
-import { toast } from "sonner"
 
 export const useChangeReqConfig = () => {
     const perPage = useSelector(selectPerPage)

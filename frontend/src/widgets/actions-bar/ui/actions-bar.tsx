@@ -1,13 +1,16 @@
-import { Button, Input, InputNumber, Select, Tooltip } from "antd"
-import classes from "./action-bar.module.css"
-import { useSelector } from "react-redux"
-import { useState } from "react"
-import { selectPerPage, selectQuery } from "@entities/parametrs"
-import { SortRepositories } from "@features/sort-repositories"
-import { ChangeRequestConfig } from "@features/change-request-config"
 import { PlusOutlined } from "@ant-design/icons"
+import { Button, Input, InputNumber, Select, Tooltip } from "antd"
+import { useState } from "react"
+import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { selectSortField, SortField } from "@entities/repository"
+
+import { ChangeRequestConfig } from "@features/change-request-config"
+import { SortRepositories } from "@features/sort-repositories"
+
+import { selectPerPage, selectQuery } from "@entities/parametrs"
+import { SortField, selectSortField } from "@entities/repository"
+
+import classes from "./action-bar.module.css"
 
 type ActionsBarState = {
     perPage: number

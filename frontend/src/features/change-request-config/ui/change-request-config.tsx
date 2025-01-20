@@ -1,5 +1,7 @@
+import { Button, Tooltip } from "antd"
+
 import { RequestParametrsModel } from "@entities/repository"
-import { Tooltip, Button } from "antd"
+
 import { useChangeReqConfig } from "../lib/change-request-config"
 
 type ChangeRequestConfigProps = Partial<RequestParametrsModel> & {

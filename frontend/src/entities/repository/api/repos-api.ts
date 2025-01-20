@@ -1,11 +1,12 @@
 import { baseApi } from "@shared/api"
+import { githubToken } from "@shared/config"
+
 import {
-    repositoryDTOschema,
     RepositoryModel,
     RequestParametrsModel,
     ResponceSchema,
+    repositoryDTOschema,
 } from "../model/repository-model"
-import { githubToken } from "@shared/config"
 
 export const repositoryApi = baseApi.injectEndpoints({
     endpoints: (create) => ({

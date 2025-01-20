@@ -1,6 +1,7 @@
-import { ReactNode } from "react"
-import { RepositoryModel } from "../model/repository-model"
 import { Avatar, Card } from "antd"
+import { ReactNode } from "react"
+
+import { RepositoryModel } from "../model/repository-model"
 const { Meta } = Card
 
 type RepositoryProps = {

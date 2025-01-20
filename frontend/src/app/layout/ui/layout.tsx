@@ -1,9 +1,12 @@
-import { Main } from "@widgets/main"
-import classes from "./layout.module.css"
 import { Outlet } from "react-router-dom"
-import { Header } from "@widgets/header"
-import { NavbarConfiguration } from "../config/navbar-config"
 import { Toaster } from "sonner"
+
+import { Header } from "@widgets/header"
+import { Main } from "@widgets/main"
+
+import { NavbarConfiguration } from "../config/navbar-config"
+
+import classes from "./layout.module.css"
 
 export function Layout() {
     return (
