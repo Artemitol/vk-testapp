@@ -11,12 +11,11 @@
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
-    /* width: 100%; */
 }
 
 .formBlock {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 0.2rem;
 }
 
@@ -26,4 +25,16 @@
     align-items: center;
     gap: 0.1rem;
     width: 100px;
+}
+
+.mainActions {
+    display: flex;
+    flex-direction: row;
+}
+
+.searchBlock {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 0.5rem;
 }

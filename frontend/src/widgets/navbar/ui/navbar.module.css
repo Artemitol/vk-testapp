@@ -15,4 +15,10 @@
 
 .link {
     height: 100%;
+    color: #fff;
+    transition-duration: var(--transition-duration);
+
+    &:hover {
+        color: rgb(32, 64, 179);
+    }
 }

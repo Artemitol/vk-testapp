@@ -1,6 +1,8 @@
 .header {
-    --XheaderPadding: 2rem; /* 32px */
-    --YheaderPadding: 0.5rem; /* 8px */
+    --XheaderPadding: 2rem;
+    /* 32px */
+    --YheaderPadding: 0.5rem;
+    /* 8px */
 
 
     display: flex;
@@ -14,7 +16,8 @@
     z-index: 100;
 
     @media screen and (max-width: var(--tablet-max)) and (min-width: var(--tablet-min)) {
-        --XheaderPadding: 1rem, /* 16px */
+        --XheaderPadding: 1rem,
+            /* 16px */
     }
 }
 
@@ -25,4 +28,13 @@
     align-items: center;
     width: 100%;
     max-width: calc(var(--max-content-width) - 2 * var(--XheaderPadding));
+}
+
+.link {
+    color: #ffffff;
+    transition-duration: var(--transition-duration);
+
+    &:hover {
+        color: rgb(32, 64, 179);
+    }
 }

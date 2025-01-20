@@ -32,7 +32,6 @@ export function ActionsBar() {
                     <div className={classes.perPage}>
                         <Tooltip title='Change how many pages will be displayed per page'>
                             <div className={classes.formBlock}>
-                                <label>Per page</label>
                                 <InputNumber
                                     placeholder='per page'
                                     value={local.perPage.toString()}

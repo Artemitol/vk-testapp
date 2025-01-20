@@ -1,5 +1,6 @@
 #root {
     color: light-dark(#d7d7d7, #1e1e1e);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
     ul {
         list-style: none;

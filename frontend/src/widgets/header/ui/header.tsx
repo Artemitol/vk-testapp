@@ -11,7 +11,7 @@ export function Header({ navConfig }: HeaderProps) {
     return (
         <header className={classes.header}>
             <div className={classes.inner}>
-                <Link to='/'>
+                <Link to='/' className={classes.link}>
                     <Logo />
                 </Link>
                 <Navbar config={navConfig} />
