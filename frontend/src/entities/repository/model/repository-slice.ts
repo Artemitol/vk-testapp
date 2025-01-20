@@ -15,7 +15,7 @@ const initialState: SortedReposStateType = {
     reposList: [],
     reposCount: 0,
     sortDirection: "asc",
-    sortField: "id",
+    sortField: "name",
 }
 
 export const repositoriesSlice = createSlice({
@@ -48,6 +48,7 @@ export const repositoriesSlice = createSlice({
             state,
             action: PayloadAction<{
                 direction: SortDirection
+                sortField: SortField
             }>
         ) => {
             state.sortDirection = action.payload.direction

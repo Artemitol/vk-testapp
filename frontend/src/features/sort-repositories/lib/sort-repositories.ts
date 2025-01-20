@@ -1,13 +1,19 @@
-import { SortDirection, sortRepositories } from "@entities/repository"
+import {
+    SortDirection,
+    SortField,
+    sortRepositories,
+} from "@entities/repository"
 import { useDispatch } from "react-redux"
 import { toast } from "sonner"
 
-export const useSortRepository = () => {
+export const useSortRepositories = () => {
     const dispatch = useDispatch()
 
-    const sortRepository = (direction: SortDirection) => {
+    const sortRepository = (direction: SortDirection, field: SortField) => {
         try {
-            dispatch(sortRepositories({ direction: direction }))
+            dispatch(
+                sortRepositories({ direction: direction, sortField: field })
+            )
 
             toast.info("Now data is not in original state")
         } catch {

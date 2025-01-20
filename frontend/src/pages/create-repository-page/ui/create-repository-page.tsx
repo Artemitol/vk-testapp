@@ -47,6 +47,9 @@ export function CreateRepositoryPage() {
                 <div className={classes.actions}>
                     <GoBack value='back' />
                 </div>
+                <span className={classes.formTitle}>
+                    Enter values of new repo
+                </span>
                 <Form name='Create repository' form={form} onFinish={onFinish}>
                     <Form.Item
                         label='Name'
