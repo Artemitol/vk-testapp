@@ -3,8 +3,12 @@ export type {
     RepositoryModel,
     RequestParametrsModel,
     ResponceSchema,
+    RepositoryKeysModel,
 } from "./model/repository-model"
-export { repositoryDTOschema } from "./model/repository-model"
+export {
+    repositoryDTOschema,
+    defaultRepositoryValues,
+} from "./model/repository-model"
 export {
     addRepository,
     removeRepository,

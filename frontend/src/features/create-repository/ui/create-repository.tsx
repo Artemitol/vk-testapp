@@ -3,45 +3,39 @@ import { addRepository, RepositoryModel } from "@entities/repository"
 import { Button, Tooltip } from "antd"
 import { useState } from "react"
 import { useDispatch } from "react-redux"
-import { useNavigate } from "react-router-dom"
 import { toast } from "sonner"
 
 type CreateRepositoryProps = {
-    dataToCreate?: RepositoryModel
+    dataToCreate: RepositoryModel
+    isDisabled?: boolean
     label: string
 }
 
 export function CreateRepository({
     dataToCreate,
     label,
+    isDisabled = false,
 }: CreateRepositoryProps) {
     const dispatch = useDispatch()
-    const navigate = useNavigate()
     // Indicates that repository is being added now
     const [isProcessing, setIsProcessing] = useState<boolean>(false)
 
     function clickHandler() {
         try {
-            if (dataToCreate) {
-                setIsProcessing(true)
-                dispatch(addRepository(dataToCreate))
-                setIsProcessing(false)
+            setIsProcessing(true)
+            dispatch(addRepository(dataToCreate))
+            setIsProcessing(false)
 
-                toast.success("Added new repository")
-            } else {
-                navigate("/create-repository")
-                toast.info("enter data, that you need, and press CREATE", {
-                    duration: 6000,
-                })
-            }
+            toast.success("Added new repository")
         } catch {
             toast.error("Failed to create new repository")
         }
     }
 
     return (
-        <Tooltip>
+        <Tooltip title='Creates locally new repository'>
             <Button
+                disabled={isDisabled}
                 loading={isProcessing}
                 onClick={clickHandler}
                 size='large'

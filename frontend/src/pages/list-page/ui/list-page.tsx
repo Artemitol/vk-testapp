@@ -7,8 +7,7 @@ export function ListPage() {
     return (
         <section className={classes.listPage}>
             <h2 className={classes.heading}>
-                View repositories, given by API (if you want to manipulate with
-                data locally, go to other page)
+                On this page you can view a result of api request
             </h2>
             <div className={classes.content}>
                 <ActionsBar />

@@ -15,7 +15,7 @@ export function GoBack({ value }: GoBackProps) {
     }
 
     return (
-        <Tooltip>
+        <Tooltip title='Navigating to the last visited url'>
             <Button
                 onClick={clickHandler}
                 type='primary'

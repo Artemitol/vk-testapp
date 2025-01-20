@@ -1,11 +1,12 @@
-import { Input, InputNumber, Tooltip } from "antd"
+import { Button, Input, InputNumber, Tooltip } from "antd"
 import classes from "./action-bar.module.css"
 import { useSelector } from "react-redux"
 import { useState } from "react"
 import { selectPerPage, selectQuery } from "@entities/parametrs"
 import { SortRepositories } from "@features/sort-repositories"
 import { ChangeRequestConfig } from "@features/change-request-config"
-import { CreateRepository } from "@features/create-repository"
+import { PlusOutlined } from "@ant-design/icons"
+import { useNavigate } from "react-router-dom"
 
 type ActionsBarState = {
     perPage: number
@@ -13,6 +14,7 @@ type ActionsBarState = {
 }
 
 export function ActionsBar() {
+    const navigate = useNavigate()
     // Contains all values from local inputs
     const [local, setLocal] = useState<ActionsBarState>({
         perPage: useSelector(selectPerPage),
@@ -60,7 +62,17 @@ export function ActionsBar() {
                         q={local.query}
                     />
                 </div>
-                <CreateRepository label='Create repository' />
+                <Button
+                    onClick={() => {
+                        navigate("/create-repository")
+                    }}
+                    size='large'
+                    type='primary'
+                    icon={<PlusOutlined />}
+                    iconPosition='end'
+                >
+                    Create repository
+                </Button>
             </div>
         </div>
     )
