@@ -1,13 +1,6 @@
-import {
-    changePerPage,
-    changeQuery,
-    selectPerPage,
-    selectQuery,
-} from "@entities/parametrs"
-import { clearRepositories, RequestParametrsModel } from "@entities/repository"
+import { RequestParametrsModel } from "@entities/repository"
 import { Tooltip, Button } from "antd"
-import { useDispatch, useSelector } from "react-redux"
-import { toast } from "sonner"
+import { useChangeReqConfig } from "../lib/change-request-config"
 
 type ChangeRequestConfigProps = Partial<RequestParametrsModel> & {
     isDisabled?: boolean
@@ -19,35 +12,15 @@ export function ChangeRequestConfig({
     q,
     label,
 }: ChangeRequestConfigProps) {
-    const dispatch = useDispatch()
-    const perPage = useSelector(selectPerPage)
-    const query = useSelector(selectQuery)
-
-    // Prevents to trigger actions without changes (this will delete all repos from list)
-    const isDisabled = perPage === per_page && query === q
+    const changeConfig = useChangeReqConfig()
 
     function clickHandler() {
-        if (!per_page && !q) {
-            toast.error("Trying to change config without new params")
-        } else {
-            // Clearing state of repos, because they aren`t actual (new params means new repos)
-            dispatch(clearRepositories())
-
-            if (per_page) {
-                dispatch(changePerPage(per_page))
-            }
-
-            if (q) {
-                dispatch(changeQuery(q))
-            }
-
-            toast.info("Updated request config")
-        }
+        changeConfig(per_page, q)
     }
 
     return (
         <Tooltip title='Applyies new changes to the request config'>
-            <Button type='primary' onClick={clickHandler} disabled={isDisabled}>
+            <Button type='primary' onClick={clickHandler}>
                 {label}
             </Button>
         </Tooltip>

@@ -1,11 +1,7 @@
-import {
-    selectReposCount,
-    SortDirection,
-    sortRepositories,
-} from "@entities/repository"
+import { selectReposCount, SortDirection } from "@entities/repository"
 import { Button, Tooltip } from "antd"
-import { useDispatch, useSelector } from "react-redux"
-import { toast } from "sonner"
+import { useSelector } from "react-redux"
+import { useSortRepository } from "../lib/sort-repositories"
 
 type SortRepositoriesProps = {
     direction: SortDirection
@@ -13,17 +9,11 @@ type SortRepositoriesProps = {
 }
 
 export function SortRepositories({ direction, label }: SortRepositoriesProps) {
-    const dispatch = useDispatch()
     const reposCount = useSelector(selectReposCount)
+    const sortRepositories = useSortRepository()
 
     function clickHandler() {
-        try {
-            dispatch(sortRepositories({ direction: direction }))
-
-            toast.info("Now data is not in original state")
-        } catch {
-            toast.error("Something when wrong... Cant sort...")
-        }
+        sortRepositories(direction)
     }
 
     return (

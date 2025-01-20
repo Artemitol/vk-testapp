@@ -1,29 +1,17 @@
 import { DeleteOutlined } from "@ant-design/icons"
-import { removeRepository, RepositoryModel } from "@entities/repository"
+import { RepositoryModel } from "@entities/repository"
 import { Button } from "antd"
-import { useDispatch } from "react-redux"
-import { toast } from "sonner"
-import { z } from "zod"
+import { useDeleteRepository } from "../lib/delete-repository"
 
 type DeleteRepositoryProps = {
     id: RepositoryModel["id"]
 }
 
 export function DeleteRepository({ id }: DeleteRepositoryProps) {
-    const dispatch = useDispatch()
+    const deleteRepository = useDeleteRepository()
 
     function clickHandler() {
-        try {
-            // Validates that id is number
-            const parsedId = z.number().parse(id)
-
-            dispatch(removeRepository(parsedId))
-
-            toast.success(`Deleted repository without troubles (id: ${id})`)
-        } catch (err) {
-            toast.error(`Error. Cant delete repository (id: ${id})`)
-            console.error(err)
-        }
+        deleteRepository(id)
     }
 
     return (

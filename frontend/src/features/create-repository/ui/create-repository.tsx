@@ -1,50 +1,53 @@
 import { PlusOutlined } from "@ant-design/icons"
-import { addRepository, RepositoryModel } from "@entities/repository"
+import { RepositoryModel } from "@entities/repository"
 import { Button, Tooltip } from "antd"
-import { useState } from "react"
-import { useDispatch } from "react-redux"
-import { toast } from "sonner"
+import { useCreateRepository } from "../lib/create-repository"
 
 type CreateRepositoryProps = {
     dataToCreate: RepositoryModel
     isDisabled?: boolean
     label: string
+    isInForm?: boolean
 }
 
 export function CreateRepository({
     dataToCreate,
     label,
     isDisabled = false,
+    isInForm = false,
 }: CreateRepositoryProps) {
-    const dispatch = useDispatch()
-    // Indicates that repository is being added now
-    const [isProcessing, setIsProcessing] = useState<boolean>(false)
+    const createRepo = useCreateRepository()
 
     function clickHandler() {
-        try {
-            setIsProcessing(true)
-            dispatch(addRepository(dataToCreate))
-            setIsProcessing(false)
-
-            toast.success("Added new repository")
-        } catch {
-            toast.error("Failed to create new repository")
-        }
+        createRepo(dataToCreate)
     }
 
     return (
         <Tooltip title='Creates locally new repository'>
-            <Button
-                disabled={isDisabled}
-                loading={isProcessing}
-                onClick={clickHandler}
-                size='large'
-                type='primary'
-                icon={<PlusOutlined />}
-                iconPosition='end'
-            >
-                {label}
-            </Button>
+            {isInForm ? (
+                <Button
+                    htmlType='submit'
+                    disabled={isDisabled}
+                    onClick={clickHandler}
+                    size='large'
+                    type='primary'
+                    icon={<PlusOutlined />}
+                    iconPosition='end'
+                >
+                    {label}
+                </Button>
+            ) : (
+                <Button
+                    disabled={isDisabled}
+                    onClick={clickHandler}
+                    size='large'
+                    type='primary'
+                    icon={<PlusOutlined />}
+                    iconPosition='end'
+                >
+                    {label}
+                </Button>
+            )}
         </Tooltip>
     )
 }
